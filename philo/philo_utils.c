@@ -1,22 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo_utils.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: faata <faata@student.42.fr>                +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/17 18:55:54 by faata             #+#    #+#             */
+/*   Updated: 2024/07/17 18:55:55 by faata            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "philo.h"
-
-int	ft_check(char *av[], t_data *data)
-{
-	char	**nums;
-	int		count;
-
-	nums = arg_check(av, -1, 0);
-	if (nums == NULL)
-		return (printf("You must give four or five values to program\n"),
-			EXIT_FAILURE);
-	count = numb_of_nums(nums);
-	if (count != 4 && count != 5)
-		return (printf("You must give four or five values to program\n"),
-			EXIT_FAILURE);
-	if (args_to_nums(nums, data) == EXIT_FAILURE)
-		return (printf("Given values must be in correct range"));
-	return (EXIT_SUCCESS);
-}
 
 char	*sub(char *str, int start, int end)
 {
