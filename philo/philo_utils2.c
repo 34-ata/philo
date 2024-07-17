@@ -1,10 +1,10 @@
 #include "philo.h"
 
-long long time_milisecond(t_data	*data)
+long time_milisecond(t_data	*data)
 {
 	gettimeofday(&data->time_val, NULL);
-	return ((long long )((data->time_val.tv_usec / 1000
-		+ data->time_val.tv_sec * 1000) - data->start_time));
+	return ((data->time_val.tv_usec / 1000
+		+ data->time_val.tv_sec * 1000) - data->start_time);
 }
 
 int	numb_of_nums(char **nums)
@@ -21,6 +21,8 @@ void	take_nums(int	*nums, t_data *data, int i)
 {
 	if (i == 4)
 		data->each_must_eat = nums[i--];
+	else
+		data->each_must_eat = -1;
 	data->time_to_sleep = nums[i--];
 	data->time_to_eat = nums[i--];
 	data->time_to_die = nums[i--];

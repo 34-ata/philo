@@ -2,7 +2,7 @@ NAME	=	philo
 SRC		=	philo_utils.c philo_utils2.c main.c philo.c
 OBJS 	= 	$(SRC:.c=.o)
 CC 		= 	gcc
-CFLAGS 	= 	-Wall -Wextra -Werror
+CFLAGS 	= 	-Wall -Wextra -Werror -g -fsanitize=thread 
 RM	 	= 	rm -rf
 
 $(NAME): $(OBJS)

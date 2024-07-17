@@ -14,7 +14,7 @@ typedef struct s_philosopher
 	int				nmb;
 	int 			status;
 	int				eat_count;
-	long long		last_eat;
+	long			last_eat;
 	pthread_mutex_t *r_fork;
 	pthread_mutex_t *l_fork;
 	struct s_data	*data;
@@ -29,7 +29,7 @@ typedef struct s_data
 	int		time_to_sleep;
 	int		each_must_eat;
 	int		eat_count;
-	long long	start_time;
+	long	start_time;
 	struct	timeval time_val;
 	pthread_mutex_t	eat_mutex;
 	pthread_mutex_t	status_mutex;
@@ -43,6 +43,6 @@ char	**arg_check(char *av[], int i, int k);
 int		ft_check(char *av[], t_data *data);
 int		numb_of_nums(char **nums);
 int		args_to_nums(char **args, t_data *data);
-long long time_milisecond(t_data	*data);
+long	time_milisecond(t_data	*data);
 int		p_init(t_data *data);
 #endif
