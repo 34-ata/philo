@@ -6,7 +6,7 @@
 /*   By: faata <faata@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 18:55:48 by faata             #+#    #+#             */
-/*   Updated: 2024/07/17 18:56:55 by faata            ###   ########.fr       */
+/*   Updated: 2024/07/18 11:31:16 by faata            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	check_status(t_data *data, int i)
 		pthread_mutex_lock(&data->eat_mutex);
 		if (data->philosopher[i].status == DEAD)
 		{
-			printf("[%ld] %d has died.\n", time_milisecond(data),
+			printf("%ld %d died\n", time_milisecond(data),
 				data->philosopher[i].nmb);
 			return (EXIT_FAILURE);
 		}
@@ -60,7 +60,6 @@ int	philo_create(t_data *data, int i)
 		data->philosopher[i].last_eat = time_milisecond(data);
 		pthread_create(&data->philosopher[i].thread, NULL, func,
 			&data->philosopher[i]);
-		usleep(50);
 	}
 	return (EXIT_SUCCESS);
 }

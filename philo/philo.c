@@ -6,7 +6,7 @@
 /*   By: faata <faata@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 18:55:37 by faata             #+#    #+#             */
-/*   Updated: 2024/07/17 18:56:32 by faata            ###   ########.fr       */
+/*   Updated: 2024/07/18 11:31:12 by faata            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	print_(t_philosopher *philosopher, char	*msg)
 {
 	pthread_mutex_lock(&philosopher->data->eat_mutex);
-	printf("[%ld]: %d %s\n", time_milisecond(philosopher->data),
+	printf("%ld %d %s\n", time_milisecond(philosopher->data),
 		philosopher->nmb, msg);
 	pthread_mutex_unlock(&philosopher->data->eat_mutex);
 }
@@ -42,24 +42,21 @@ int	life_cycle(t_philosopher *philosopher)
 {
 	while (1)
 	{
-		f_check(philosopher);
 		pthread_mutex_lock(philosopher->r_fork);
-		print_(philosopher, "has taken fork.");
+		print_(philosopher, "has taken a fork");
 		pthread_mutex_lock(philosopher->l_fork);
-		print_(philosopher, "has taken fork.");
-		print_(philosopher, "is eating.");
+		print_(philosopher, "has taken a fork");
+		print_(philosopher, "is eating");
 		pthread_mutex_lock(&philosopher->data->eat_mutex);
 		philosopher->eat_count++;
 		philosopher->last_eat = time_milisecond(philosopher->data);
 		pthread_mutex_unlock(&philosopher->data->eat_mutex);
-		f_check(philosopher);
 		ft_sleep(philosopher, philosopher->data->time_to_eat);
-		f_check(philosopher);
 		pthread_mutex_unlock(philosopher->l_fork);
 		pthread_mutex_unlock(philosopher->r_fork);
-		print_(philosopher, "sleeping.");
+		print_(philosopher, "is sleeping");
 		ft_sleep(philosopher, philosopher->data->time_to_sleep);
-		f_check(philosopher);
+		print_(philosopher, "is thinking");
 	}
 }
 
@@ -73,6 +70,8 @@ void	*func(void	*ph)
 		ft_sleep(philosopher, philosopher->data->time_to_die);
 		f_check(philosopher);
 	}
+	if (philosopher->nmb % 2 == 0)
+		usleep(100);
 	life_cycle(philosopher);
 	return (NULL);
 }
