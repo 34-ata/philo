@@ -6,7 +6,7 @@
 /*   By: faata <faata@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 18:55:48 by faata             #+#    #+#             */
-/*   Updated: 2024/07/18 11:31:16 by faata            ###   ########.fr       */
+/*   Updated: 2024/07/18 17:05:49 by faata            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	check_status(t_data *data, int i)
 		pthread_mutex_lock(&data->eat_mutex);
 		if (data->philosopher[i].status == DEAD)
 		{
-			printf("%ld %d died\n", time_milisecond(data),
+			printf("%ld\t%d died\n", time_milisecond(data),
 				data->philosopher[i].nmb);
 			return (EXIT_FAILURE);
 		}
@@ -77,8 +77,10 @@ int	main(int ac, char *av[])
 {
 	t_data	data;
 
-	(void)ac;
-	if (ft_check(av, &data, NULL, 0) == EXIT_FAILURE)
+	if (ac > 6 || ac < 5)
+		return (printf("You must give four or five values to program\n"),
+			EXIT_FAILURE);
+	if (take_args(av, &data) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
 	p_init(&data);
 	return (EXIT_SUCCESS);

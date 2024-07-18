@@ -6,7 +6,7 @@
 /*   By: faata <faata@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 18:55:37 by faata             #+#    #+#             */
-/*   Updated: 2024/07/18 11:31:12 by faata            ###   ########.fr       */
+/*   Updated: 2024/07/18 17:08:20 by faata            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	print_(t_philosopher *philosopher, char	*msg)
 {
 	pthread_mutex_lock(&philosopher->data->eat_mutex);
-	printf("%ld %d %s\n", time_milisecond(philosopher->data),
+	printf("%ld\t%d %s\n", time_milisecond(philosopher->data),
 		philosopher->nmb, msg);
 	pthread_mutex_unlock(&philosopher->data->eat_mutex);
 }
@@ -38,7 +38,7 @@ void	ft_sleep(t_philosopher *p, long time)
 		usleep(500);
 }
 
-int	life_cycle(t_philosopher *philosopher)
+void	life_cycle(t_philosopher *philosopher)
 {
 	while (1)
 	{
@@ -71,7 +71,7 @@ void	*func(void	*ph)
 		f_check(philosopher);
 	}
 	if (philosopher->nmb % 2 == 0)
-		usleep(100);
+		usleep(750);
 	life_cycle(philosopher);
 	return (NULL);
 }

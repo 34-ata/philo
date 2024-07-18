@@ -6,7 +6,7 @@
 /*   By: faata <faata@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 18:57:25 by faata             #+#    #+#             */
-/*   Updated: 2024/07/17 18:57:26 by faata            ###   ########.fr       */
+/*   Updated: 2024/07/18 15:23:54 by faata            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,11 @@ typedef struct s_data
 	pthread_mutex_t	*fork;
 }	t_data;
 
-char	**arg_check(char *av[], int i, int k);
-int		ft_check(char *av[], t_data *data, char **nums, int count);
-int		numb_of_nums(char **nums);
-int		args_to_nums(char **args, t_data *data);
 long	time_milisecond(t_data	*data);
 void	p_init(t_data *data);
-void	free_nums(char **nums);
-int		ft_check(char *av[], t_data *data, char **nums, int count);
 void	exit_(t_data *data);
 void	*func(void	*ph);
 void	f_check(t_philosopher *philosopher);
+int		take_args(char **args, t_data *data);
 
 #endif
