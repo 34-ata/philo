@@ -50,7 +50,6 @@ typedef struct s_data
 
 long	time_milisecond(t_data	*data);
 void	p_init(t_data *data);
-void	exit_(t_data *data);
 void	*func(void	*ph);
 void	f_check(t_philosopher *philosopher);
 int		take_args(char **args, t_data *data);

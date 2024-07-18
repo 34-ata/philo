@@ -12,6 +12,13 @@
 
 #include "philo.h"
 
+void	exit_(t_data *data)
+{
+	free (data->philosopher);
+	free (data->fork);
+	exit (EXIT_FAILURE);
+}
+
 int	check_status(t_data *data, int i)
 {
 	while (++i < data->num_of_philo)
@@ -67,7 +74,7 @@ int	philo_create(t_data *data, int i)
 void	p_init(t_data	*data)
 {
 	if (philo_create(data, -1) == EXIT_FAILURE)
-		exit_(data);
+			exit_(data);
 	while (1)
 		if (check_status(data, -1) == EXIT_FAILURE)
 			exit_(data);

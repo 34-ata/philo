@@ -12,6 +12,13 @@
 
 #include "philo.h"
 
+long	time_milisecond(t_data	*data)
+{
+	gettimeofday(&data->time_val, NULL);
+	return ((data->time_val.tv_usec / 1000
+			+ data->time_val.tv_sec * 1000) - data->start_time);
+}
+
 int	check_args(char **args)
 {
 	int	i;
@@ -20,15 +27,10 @@ int	check_args(char **args)
 	j = 1;
 	while (args[j])
 	{
-		i = 0;
-		while (args[j][i])
-		{
-			if ((args[j][i] >= '0' && args[j][i] <= '9') || (args[j][i] == '-'
-				|| args[j][i] == '+'))
-				i++;
-			else
-				return (printf("You must give valid values\n"), EXIT_FAILURE);		
-		}
+		i = -1;
+		while (args[j][++i])
+			if (!(args[j][i] >= '0' && args[j][i] <= '9'))
+				return (printf("You must give valid values\n"), EXIT_FAILURE);
 		j++;
 	}
 	return (EXIT_SUCCESS);
@@ -68,7 +70,7 @@ int	check_nums(char	**args)
 	j = 1;
 	while (args[j])
 	{
-		if (args_to_nums(args[j])  > 2147418647 || args_to_nums(args[j]) < 0)
+		if (args_to_nums(args[j])  > 2147418647)
 			return (EXIT_FAILURE);
 		j++;
 	}
