@@ -6,7 +6,7 @@
 /*   By: faata <faata@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 18:55:37 by faata             #+#    #+#             */
-/*   Updated: 2024/07/18 17:08:20 by faata            ###   ########.fr       */
+/*   Updated: 2024/07/19 14:32:19 by faata            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	*func(void	*ph)
 	{
 		ft_sleep(philosopher, philosopher->data->time_to_die);
 		f_check(philosopher);
+		usleep(2000);
 	}
 	if (philosopher->nmb % 2 == 0)
 		usleep(750);

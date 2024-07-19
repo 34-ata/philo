@@ -6,7 +6,7 @@
 /*   By: faata <faata@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 18:55:48 by faata             #+#    #+#             */
-/*   Updated: 2024/07/18 17:05:49 by faata            ###   ########.fr       */
+/*   Updated: 2024/07/19 14:08:25 by faata            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	exit_(t_data *data)
 {
 	free (data->philosopher);
 	free (data->fork);
+	pthread_mutex_destroy(&data->eat_mutex);
 	exit (EXIT_FAILURE);
 }
 
@@ -74,7 +75,7 @@ int	philo_create(t_data *data, int i)
 void	p_init(t_data	*data)
 {
 	if (philo_create(data, -1) == EXIT_FAILURE)
-			exit_(data);
+		exit_(data);
 	while (1)
 		if (check_status(data, -1) == EXIT_FAILURE)
 			exit_(data);

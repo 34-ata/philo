@@ -6,7 +6,7 @@
 /*   By: faata <faata@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 18:57:25 by faata             #+#    #+#             */
-/*   Updated: 2024/07/18 15:23:54 by faata            ###   ########.fr       */
+/*   Updated: 2024/07/19 13:40:18 by faata            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,6 @@ void	p_init(t_data *data);
 void	*func(void	*ph);
 void	f_check(t_philosopher *philosopher);
 int		take_args(char **args, t_data *data);
+void	print_(t_philosopher *philosopher, char	*msg);
 
 #endif

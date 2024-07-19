@@ -6,7 +6,7 @@
 /*   By: faata <faata@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/17 18:55:54 by faata             #+#    #+#             */
-/*   Updated: 2024/07/18 15:26:28 by faata            ###   ########.fr       */
+/*   Updated: 2024/07/19 13:21:32 by faata            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int	check_nums(char	**args)
 	j = 1;
 	while (args[j])
 	{
-		if (args_to_nums(args[j])  > 2147418647)
+		if (args_to_nums(args[j]) > 2147418647)
 			return (EXIT_FAILURE);
 		j++;
 	}
